@@ -21,7 +21,7 @@ public class CustomerService {
         customerRepository.saveAndFlush(customer);
         //todo: check if fraudster
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http://localhost:8081/api/services/fraud-check/{customerId}",
+                "http://FRAUD/api/services/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getEmail()
         );
