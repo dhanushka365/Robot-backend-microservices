@@ -27,7 +27,7 @@ public class FraudCheckHistory {
     )
 
     private Integer id;
-    private Integer customerId;
+    private String customerEmail;
     private Boolean isFraudster;
     private LocalDateTime createAt;
 }

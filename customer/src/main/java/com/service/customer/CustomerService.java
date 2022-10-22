@@ -17,17 +17,18 @@ public class CustomerService {
                 .build();
         //todo: check if email valid
         //todo: check if email not taken
+        //todo: store customer in db
+        customerRepository.saveAndFlush(customer);
         //todo: check if fraudster
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http:localhost:8081/api/service/fraud-check/{customerId}",
+                "http://localhost:8081/api/services/fraud-check/{customerId}",
                 FraudCheckResponse.class,
-                customer.getId()
+                customer.getEmail()
         );
 
         if (fraudCheckResponse.isFraudster()){
             throw new IllegalStateException("Fraudster found");
         }
-        //todo: store customer in db
-        customerRepository.saveAndFlush(customer);
+
     }
 }
